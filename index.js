@@ -1,6 +1,6 @@
 const { Engine, Render, Runner, World, Bodies } = Matter;
 
-const cells = 3;
+const cells = 5;
 const width = 600;
 const height = 600;
 
@@ -100,8 +100,10 @@ const stepThroughCell = (row, column) => {
 		} else {
 			horizontalsWalls[row][column] = true;
 		}
+
+		// Visit that next cell
+		stepThroughCell(nextRow, nextColumn);
 	}
-	// Visit that next cell
 };
 
 stepThroughCell(startRow, startColumn);
