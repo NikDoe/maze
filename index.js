@@ -43,12 +43,22 @@ const horizontalsWalls = Array(cells - 1)
 const startRow = Math.floor(Math.random() * cells);
 const startColumn = Math.floor(Math.random() * cells);
 
-console.log(startRow, startColumn);
-
 const stepThroughCell = (row, column) => {
 	// If i have visited the cell at [row, column], then return
+	if (grid[row][column]) return;
+
 	// Mark this cell as being visited
+	grid[row][column] = true;
+
 	// Assemble randomly-ordered list of neighbors
+	const neighbors = [
+		[row - 1, column],
+		[row, column + 1],
+		[row + 1, column],
+		[row, column - 1],
+	];
+
+	console.log(neighbors);
 	// For each neighbor....
 	// See if that neighbor is out of bounds
 	// If we have visited that neighbor, continue to next neighbor
@@ -57,3 +67,5 @@ const stepThroughCell = (row, column) => {
 };
 
 stepThroughCell(startRow, startColumn);
+console.log(startRow, startColumn);
+console.log(grid);
