@@ -95,9 +95,13 @@ const stepThroughCell = (row, column) => {
 			verticalsWalls[row][column - 1] = true;
 		} else if (direction === 'right') {
 			verticalsWalls[row][column] = true;
+		} else if (direction === 'up') {
+			horizontalsWalls[row - 1][column] = true;
+		} else {
+			horizontalsWalls[row][column] = true;
 		}
 	}
 	// Visit that next cell
 };
 
-stepThroughCell(1, 1);
+stepThroughCell(startRow, startColumn);
