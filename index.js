@@ -107,3 +107,10 @@ const stepThroughCell = (row, column) => {
 };
 
 stepThroughCell(startRow, startColumn);
+
+horizontalsWalls.forEach(row =>
+	row.forEach(open => {
+		if (open) return;
+		const wall = Bodies.rectangle();
+	}),
+);
