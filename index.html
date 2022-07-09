@@ -7,10 +7,34 @@
 	<style>
 		body {
 			margin: 0;
+			display: flex;
+			
+		}
+		
+		.hidden {
+			display: none !important;
+		}
+		
+		.winner {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			z-index: 1;
+			width: 100vw;
+			height: 100vh;
+		}
+		
+		h1 {
+			color: aliceblue;
+			font-size: 64px;
 		}
 	</style>
 </head>
 <body>
+<div class="winner hidden">
+	<h1>You Win ❗ 😎</h1>
+</div>
 <script src="index.js"></script>
 </body>
 </html>
