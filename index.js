@@ -1,4 +1,4 @@
-const { Engine, Render, Runner, World, Bodies } = Matter;
+const { Engine, Render, Runner, World, Bodies, Body } = Matter;
 
 const cells = 20;
 const width = 600;
@@ -116,7 +116,7 @@ horizontalsWalls.forEach((row, rowIndex) =>
 			columnIndex * unitLength + unitLength / 2,
 			rowIndex * unitLength + unitLength,
 			unitLength,
-			1,
+			5,
 			{ isStatic: true },
 		);
 		World.add(world, wall);
@@ -130,7 +130,7 @@ verticalsWalls.forEach((column, rowIndex) => {
 		const wall = Bodies.rectangle(
 			columnIndex * unitLength + unitLength,
 			rowIndex * unitLength + unitLength / 2,
-			1,
+			5,
 			unitLength,
 			{ isStatic: true },
 		);
@@ -150,15 +150,15 @@ const goal = Bodies.rectangle(
 
 World.add(world, goal);
 
-const ball = Bodies.circle(unitLength / 2, unitLength / 2, unitLength / 4, {
-	isStatic: true,
-});
+const ball = Bodies.circle(unitLength / 2, unitLength / 2, unitLength / 4);
 
 World.add(world, ball);
 
 document.addEventListener('keydown', event => {
-	if (event.code === 'KeyW') console.log('UP');
-	if (event.code === 'KeyD') console.log('RIGHT');
-	if (event.code === 'KeyS') console.log('DOWN');
-	if (event.code === 'KeyA') console.log('LEFT');
+	const { x, y } = ball.velocity;
+
+	if (event.code === 'KeyW') Body.setVelocity(ball, { x, y: y - 5 });
+	if (event.code === 'KeyD') Body.setVelocity(ball, { x: x + 5, y });
+	if (event.code === 'KeyS') Body.setVelocity(ball, { x, y: y + 5 });
+	if (event.code === 'KeyA') Body.setVelocity(ball, { x: x - 5, y });
 });
