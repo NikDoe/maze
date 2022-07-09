@@ -6,6 +6,10 @@ const height = 600;
 const unitLength = width / cells;
 
 const engine = Engine.create();
+
+//set the gravity off
+engine.world.gravity.y = 0;
+
 const { world } = engine;
 const render = Render.create({
 	element: document.body,
