@@ -149,3 +149,9 @@ const goal = Bodies.rectangle(
 );
 
 World.add(world, goal);
+
+const ball = Bodies.circle(unitLength / 2, unitLength / 2, unitLength / 4, {
+	isStatic: true,
+});
+
+World.add(world, ball);
