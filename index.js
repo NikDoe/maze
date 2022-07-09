@@ -155,3 +155,10 @@ const ball = Bodies.circle(unitLength / 2, unitLength / 2, unitLength / 4, {
 });
 
 World.add(world, ball);
+
+document.addEventListener('keydown', event => {
+	if (event.code === 'KeyW') console.log('UP');
+	if (event.code === 'KeyD') console.log('RIGHT');
+	if (event.code === 'KeyS') console.log('DOWN');
+	if (event.code === 'KeyA') console.log('LEFT');
+});
