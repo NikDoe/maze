@@ -17,6 +17,7 @@ const render = Render.create({
 	element: document.body,
 	engine,
 	options: {
+		wireframes: false,
 		width,
 		height,
 	},
@@ -123,7 +124,11 @@ horizontalsWalls.forEach((row, rowIndex) =>
 			rowIndex * unitLengthY + unitLengthY,
 			unitLengthX,
 			5,
-			{ label: 'wall', isStatic: true },
+			{
+				label: 'wall',
+				isStatic: true,
+				render: { fillStyle: 'indianred' },
+			},
 		);
 		World.add(world, wall);
 	}),
@@ -138,7 +143,11 @@ verticalsWalls.forEach((column, rowIndex) => {
 			rowIndex * unitLengthY + unitLengthY / 2,
 			5,
 			unitLengthY,
-			{ label: 'wall', isStatic: true },
+			{
+				label: 'wall',
+				isStatic: true,
+				render: { fillStyle: 'indianred' },
+			},
 		);
 		World.add(world, wall);
 	});
@@ -152,6 +161,7 @@ const goal = Bodies.rectangle(
 	{
 		label: 'goal',
 		isStatic: true,
+		render: { fillStyle: 'white' },
 	},
 );
 
@@ -160,6 +170,7 @@ World.add(world, goal);
 const ballRadius = Math.min(unitLengthX, unitLengthY) / 4;
 const ball = Bodies.circle(unitLengthX / 2, unitLengthY / 2, ballRadius, {
 	label: 'ball',
+	render: { fillStyle: 'darkorange' },
 });
 
 World.add(world, ball);
@@ -167,10 +178,10 @@ World.add(world, ball);
 document.addEventListener('keydown', event => {
 	const { x, y } = ball.velocity;
 
-	if (event.code === 'KeyW') Body.setVelocity(ball, { x, y: y - 4 });
-	if (event.code === 'KeyD') Body.setVelocity(ball, { x: x + 4, y });
-	if (event.code === 'KeyS') Body.setVelocity(ball, { x, y: y + 4 });
-	if (event.code === 'KeyA') Body.setVelocity(ball, { x: x - 4, y });
+	if (event.code === 'KeyW') Body.setVelocity(ball, { x, y: y - 3 });
+	if (event.code === 'KeyD') Body.setVelocity(ball, { x: x + 3, y });
+	if (event.code === 'KeyS') Body.setVelocity(ball, { x, y: y + 3 });
+	if (event.code === 'KeyA') Body.setVelocity(ball, { x: x - 3, y });
 });
 
 //win condition
